@@ -1,0 +1,21 @@
+{
+  "name": "beneficum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khrove/Beneficum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khrove/Beneficum/issues"
+  },
+  "homepage": "https://github.com/Khrove/Beneficum#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.25.1"
+  }
+}
