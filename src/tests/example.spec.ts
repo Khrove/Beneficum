@@ -1,14 +1,10 @@
-import { test, expect } from '@playwright/test';
-import {AuthOperation} from "../components/business-operations/Auth/Auth.operation";
-import { AuthenticationPage } from "../components/Pages/Auth/Auth.page";
-import {authMixin} from "../components/business-operations/Auth/Auth.mixin";
-
-Object.assign(AuthenticationPage.prototype, authMixin);
+import 'dotenv/config';
+import { test } from '@playwright/test';
+import { AuthOperation } from '../components/business-operations/Auth/Auth.operation';
 
 test('Login to Great Minds', async ({ page }) => {
-  // const authPage = new AuthOperation(page);
-  const authPage = new AuthenticationPage(page)
+  const authOperation = new AuthOperation(page);
 
-  await page.goto('https://digital.uat.greatminds.dev');
-  await authPage.LoginWithEmail('', '');
+  await page.goto(`${process.env.UAT_URL}`);
+  await authOperation.loginWithEmail('sit_t1_reg1auto@yopmail.com', 'Test@123');
 });

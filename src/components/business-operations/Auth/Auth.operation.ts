@@ -10,7 +10,9 @@ export class AuthOperation {
         this.authPage = new AuthenticationPage(this._page);
     }
 
-    public async LoginWithEmail() {
+    public async loginWithEmail(email: string, password: string) {
         await this.authPage.loginWithEmailBtn.click();
+        await this.authPage.emailInput.type(email);
+        await this.authPage.passwordInput.type(password);
     }
 }
