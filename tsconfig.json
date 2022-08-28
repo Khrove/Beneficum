@@ -3,6 +3,7 @@
     "module": "commonjs",
     "moduleResolution": "Node",
     "target": "ESNext",
+    "types": ["@types/node"]
   },
   "exclude": [
     "node_modules"

@@ -1,5 +1,5 @@
 import {AuthenticationPage} from "../../Pages/Auth/Auth.page";
-import {Page} from "@playwright/test";
+import { Page } from "@playwright/test";
 
 export class AuthOperation {
     private _page: Page;
