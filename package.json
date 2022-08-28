@@ -17,5 +17,8 @@
   "homepage": "https://github.com/Khrove/Beneficum#readme",
   "devDependencies": {
     "@playwright/test": "^1.25.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1"
   }
 }

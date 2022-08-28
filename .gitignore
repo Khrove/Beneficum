@@ -91,3 +91,4 @@ typings/
 /playwright/.cache/
 
 *.idea
+/src/*.js
