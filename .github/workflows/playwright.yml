@@ -25,7 +25,7 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
       env:
-        UAT_URL: {{ secrets.UAT_URL }}
+        UAT_URL: ${{ secrets.UAT_URL }}
 
     - uses: actions/upload-artifact@v2
       if: always()
