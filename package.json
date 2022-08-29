@@ -6,7 +6,7 @@
   "scripts": {
     "build:docker": "docker build -t playwright-docker .",
     "run:test:docker": "docker run -it playwright-docker:latest npm run test",
-    "test": "playwright test --browser=all",
+    "test": "playwright test --browser=chromium",
     "test-html-report": "playwright test --browser=all --reporter=html",
     "test-json-report": "PLAYWRIGHT_JSON_OUTPUT_NAME=results.json playwright test --browser=chromium --reporter=json"
   },
@@ -26,6 +26,7 @@
     "@types/node": "^18.7.13"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.4.4",
     "dotenv": "^16.0.1"
   }
 }
