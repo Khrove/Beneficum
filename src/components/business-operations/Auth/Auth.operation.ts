@@ -1,18 +1,13 @@
-import {AuthenticationPage} from "../../Pages/Auth/Auth.page";
 import { Page } from "@playwright/test";
+import { AuthenticationPage } from "../../Pages/Auth/Auth.page";
 
-export class AuthOperation {
-    private _page: Page;
-    private authPage: AuthenticationPage;
-
-    constructor(page: Page) {
-        this._page = page;
-        this.authPage = new AuthenticationPage(this._page);
-    }
-
-    public async loginWithEmail(email: string, password: string) {
-        await this.authPage.loginWithEmailBtn.click();
-        await this.authPage.emailInput.type(email);
-        await this.authPage.passwordInput.type(password);
+export function AuthOperation(page: Page) {
+    const authPage = new AuthenticationPage(page);
+    return {
+        loginWithEmail: async (email: string, password: string) => {
+            await authPage.loginWithEmailBtn.click();
+            await authPage.emailInput.type(email);
+            await authPage.passwordInput.type(password);
+        }
     }
 }
