@@ -1,5 +1,4 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
   testDir: './src/tests',
@@ -13,7 +12,7 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    headless: true,
+    headless: false,
     actionTimeout: 0,
     trace: 'on-first-retry',
   },

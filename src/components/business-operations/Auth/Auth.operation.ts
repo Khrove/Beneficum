@@ -8,6 +8,7 @@ export function AuthOperation(page: Page) {
             await authPage.loginWithEmailBtn.click();
             await authPage.emailInput.type(email);
             await authPage.passwordInput.type(password);
+            await authPage.loginBtn.click();
         }
     }
 }
