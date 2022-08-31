@@ -13,5 +13,6 @@ test('Login to Great Minds', async ({ page }) => {
   await teacher.loginWithEmail('sit_t1_reg1auto@yopmail.com', 'Test@123');
   await page.waitForLoadState('networkidle');
   expect(gradeViewOperation.areModulesVisible()).toBeTruthy();
+  await gradeViewOperation.checkGrade('Level 1');
   await gradeViewOperation.clickOnModule('Counting, Comparison, and Addition');
 });
