@@ -23,7 +23,7 @@ jobs:
       run: npx playwright install --with-deps
     
     - name: Compile Typescript
-      run: npx tsc
+      run: tsc
 
     - name: Run Playwright tests
       run: npm run test
