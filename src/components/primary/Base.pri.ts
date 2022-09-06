@@ -18,20 +18,21 @@ export abstract class BasePri {
         return this._element.isEnabled();
     }
 
-    async getElementLocation(): Promise<null | BoundingRect> {
+    async getElementLocation(): Promise<BoundingRect> {
         return this._element.boundingBox();
     }
 
     async isElementOverlapped() {
         const location = await this.getElementLocation();
-        const elsAtPoint = await this._page.evaluate(location => {
+        const elsAtPoint = await this._page.evaluate((location) => {
+            console.log('location:' + location);
             return Promise.resolve(document.elementFromPoint(location.x, location.y));
         }, location);
         return elsAtPoint;
     }
 
     /**
-     * @desc Checks to see if an element is clickable
+     * @desc Checks to see if an element is clickable by first validating the element is visible, enabled, not null, and is hoverable
      */
     async waitForClickable() {
         expect(await this._element.isVisible() 
