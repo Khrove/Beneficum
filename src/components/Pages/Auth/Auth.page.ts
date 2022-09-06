@@ -1,20 +1,30 @@
 import type { Locator, Page } from "@playwright/test";
+import { ClickablePri } from "../../primary/Clickable.pri";
+import { InputPri } from "../../primary/Input.pri";
 
 export class AuthenticationPage {
-    private _loginWithEmailBtn: Locator;
-    private _emailInput: Locator;
+    private _page: Page;
+    private _loginWithEmailBtn: ClickablePri;
+    private _emailInput: InputPri;
+    private _moduleTitle: ClickablePri;
     private _passwordInput: Locator;
     private _loginBtn: Locator;
 
     constructor(page: Page) {
-        this._loginWithEmailBtn = page.locator('button[class*="LoginWithEmail"]');
-        this._emailInput = page.locator('#email');
+        this._page = page;
+        this._loginWithEmailBtn = new ClickablePri(this._page.locator('button[class*="LoginWithEmail"]'), page);
+        this._moduleTitle = new ClickablePri(this._page.locator('.module-card span'), page);
+        this._emailInput = new InputPri(this._page.locator('#email'), page);
         this._passwordInput = page.locator('#password');
         this._loginBtn = page.locator('[aria-label="Log in"]')
     }
 
     get loginWithEmailBtn() {
         return this._loginWithEmailBtn;
+    }
+
+    get randomBtn() {
+        return this._moduleTitle;
     }
 
     get emailInput() {
