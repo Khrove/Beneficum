@@ -6,14 +6,12 @@ export class AuthenticationPage {
     private _page: Page;
     private _loginWithEmailBtn: ClickablePri;
     private _emailInput: InputPri;
-    private _moduleTitle: ClickablePri;
     private _passwordInput: Locator;
     private _loginBtn: Locator;
 
     constructor(page: Page) {
         this._page = page;
         this._loginWithEmailBtn = new ClickablePri(this._page.locator('button[class*="LoginWithEmail"]'), page);
-        this._moduleTitle = new ClickablePri(this._page.locator('.module-card span'), page);
         this._emailInput = new InputPri(this._page.locator('#email'), page);
         this._passwordInput = page.locator('#password');
         this._loginBtn = page.locator('[aria-label="Log in"]')
@@ -21,10 +19,6 @@ export class AuthenticationPage {
 
     get loginWithEmailBtn() {
         return this._loginWithEmailBtn;
-    }
-
-    get randomBtn() {
-        return this._moduleTitle;
     }
 
     get emailInput() {

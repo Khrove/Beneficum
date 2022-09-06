@@ -5,7 +5,7 @@ export function AuthOperation(page: Page) {
     const authPage = new AuthenticationPage(page);
     return {
         loginWithEmail: async (email: string, password: string) => {
-            expect(authPage.randomBtn.isLocatorClickable()).toBeTruthy();
+            await authPage.loginWithEmailBtn.waitForClickable();
             authPage.loginWithEmailBtn.click();
             await authPage.emailInput.type(email);
             await authPage.passwordInput.type(password);

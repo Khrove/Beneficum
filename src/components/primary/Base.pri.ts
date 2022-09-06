@@ -1,4 +1,5 @@
-import type { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
+import { BoundingRect } from "../../../interfaces/misc.interface";
 
 export abstract class BasePri {
     private _element: Locator;
@@ -17,7 +18,28 @@ export abstract class BasePri {
         return this._element.isEnabled();
     }
 
-    async isLocatorClickable(): Promise<boolean> {
-        return (await this._element.isEnabled() && await this._element.isVisible()) ? true : false;
+    async getElementLocation(): Promise<null | BoundingRect> {
+        return this._element.boundingBox();
+    }
+
+    async isElementOverlapped() {
+        const location = await this.getElementLocation();
+        const elsAtPoint = await this._page.evaluate(location => {
+            return Promise.resolve(document.elementFromPoint(location.x, location.y));
+        }, location);
+        return elsAtPoint;
+    }
+
+    /**
+     * @desc Checks to see if an element is clickable
+     */
+    async waitForClickable() {
+        expect(await this._element.isVisible() 
+            && await this._element.isEnabled()
+            && this._element !== null
+            && this._element.hover
+        ).toBeTruthy();
+        const els = await this.isElementOverlapped();
+        console.log(JSON.stringify(els));
     }
 }
