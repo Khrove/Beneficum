@@ -1,19 +1,13 @@
 import { Locator, Page } from "@playwright/test";
 
-export class SubHeaderComp {
-    private _page: Page;
-    private _levelDropdown: Locator;
+export const SubHeaderComp = (page: Page) => {
+    const _page: Page = page;
+    const _levelDropdown = _page.locator('[aria-controls="menu-courses"] span:nth-child(2) span');
 
-    constructor(page: Page) {
-        this._page = page;
-        this._levelDropdown = page.locator('[aria-controls="menu-courses"] span:nth-child(2) span');
-    }
-
-    get levelDropdown() {
-        return this._levelDropdown;
-    }
-
-    getLevelDropdownItem(item: string) {
-        return this._page.locator('[role="menuitem"] span[class*="Prefix"]', { hasText: `${item}` });
+    return {
+        levelDropdown: () => { return _levelDropdown; },
+        getLevelDropdownItem: (item: string) => {
+            return _page.locator('[role="menuitem"] span[class*="Prefix"]', { hasText: `${item}` });
+        }
     }
 }

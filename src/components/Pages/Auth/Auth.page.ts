@@ -2,34 +2,17 @@ import type { Locator, Page } from "@playwright/test";
 import { ClickablePri } from "../../primary/Clickable.pri";
 import { InputPri } from "../../primary/Input.pri";
 
-export class AuthenticationPage {
-    private _page: Page;
-    private _loginWithEmailBtn: ClickablePri;
-    private _emailInput: InputPri;
-    private _passwordInput: Locator;
-    private _loginBtn: Locator;
+export const AuthenticationPage = (page: Page) => {
+    const _page: Page = page;
+    const loginWithEmailBtn: ClickablePri = new ClickablePri(_page.locator('button[class*="LoginWithEmail"]'), page); 
+    const emailInput = new InputPri(_page.locator('#email'), page);
+    const passwordInput = new InputPri(_page.locator('#password'), page);
+    const loginBtn = new ClickablePri(_page.locator('[aria-label="Log in"]'), page);
 
-    constructor(page: Page) {
-        this._page = page;
-        this._loginWithEmailBtn = new ClickablePri(this._page.locator('button[class*="LoginWithEmail"]'), page);
-        this._emailInput = new InputPri(this._page.locator('#email'), page);
-        this._passwordInput = page.locator('#password');
-        this._loginBtn = page.locator('[aria-label="Log in"]')
-    }
-
-    get loginWithEmailBtn() {
-        return this._loginWithEmailBtn;
-    }
-
-    get emailInput() {
-        return this._emailInput;
-    }
-
-    get passwordInput() {
-        return this._passwordInput;
-    }
-
-    get loginBtn() {
-        return this._loginBtn;
+    return {
+        loginWithEmailBtn: () => { return loginWithEmailBtn; },
+        emailInput: () => { return emailInput; },
+        passwordInput: () => { return passwordInput; },
+        loginBtn: () => { return loginBtn; }
     }
 }
