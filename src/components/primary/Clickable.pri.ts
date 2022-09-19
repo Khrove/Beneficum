@@ -2,7 +2,7 @@ import { Locator } from "@playwright/test";
 import { BasePri } from "./Base.pri";
 
 export class ClickablePri extends BasePri {
-    click(options?: string | number) {
+    async click(options?: string | number) {
         let selector: Locator = this.element;
         if (options) {
             if (typeof options === 'string') {
@@ -12,6 +12,6 @@ export class ClickablePri extends BasePri {
                 selector = this.element.nth(options);
             }
         }
-        selector.click();
+        await selector.click();
     }
 }
