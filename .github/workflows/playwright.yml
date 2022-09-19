@@ -21,9 +21,6 @@ jobs:
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    
-    - name: Compile Typescript
-      run: tsc
 
     - name: Run Playwright tests
       run: npm run test
