@@ -8,8 +8,9 @@ on:
 
 jobs:
   test:
-    matrix:
-      browser: [chromium, firefox, webkit]
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
 
     timeout-minutes: 60
     runs-on: ubuntu-latest
