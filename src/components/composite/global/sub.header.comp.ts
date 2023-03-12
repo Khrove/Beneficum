@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import { ClickablePri } from "../../primary/Clickable.pri";
 
 export const SubHeaderComp = (page: Page) => {
     const _page: Page = page;
@@ -7,7 +8,7 @@ export const SubHeaderComp = (page: Page) => {
     return {
         levelDropdown: () => { return _levelDropdown; },
         getLevelDropdownItem: (item: string) => {
-            return _page.locator('[role="menuitem"] span[class*="Prefix"]', { hasText: `${item}` });
+            return new ClickablePri(_page.locator(`li[class*="NavMenu"] a[data-dp-analytics-id$="em2.g${item}"]`), _page);
         }
     }
 }

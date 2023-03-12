@@ -13,6 +13,6 @@ test('Login to Great Minds and move around', async ({ page }) => {
     await page.waitForLoadState('networkidle');
     
     expect(gradeViewOps.areModulesVisible()).toBeTruthy();
-    await gradeViewOps.checkGrade('Level 1');
+    await gradeViewOps.checkGrade('1');
     await gradeViewOps.clickOnModule('Counting, Comparison, and Addition');
   });
