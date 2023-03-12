@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { expect, test } from '@playwright/test';
 import { GradeViewOperation } from '../components/business-operations/explore/Grade.view.operations';
-import { AuthOperation } from '../components/business-operations/auth/Auth.operation';
+import { AuthOperation } from '../components/business-operations/Auth/Auth.operation';
 
 test('Login to Great Minds and move around', async ({ page }) => {
     const teacher = AuthOperation(page);
