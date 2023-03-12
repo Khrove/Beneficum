@@ -7,6 +7,7 @@ const GradeView = (page) => {
     const moduleTitle = _page.locator('.module-card span');
     const subHeaderComp = (0, sub_header_comp_1.SubHeaderComp)(page);
     return {
+        url: () => { return '/explore/curricula/grade?'; },
         moduleTitle: () => { return moduleTitle; },
         subHeaderComp: () => { return subHeaderComp; },
         getModuleTitleByText: (title) => {
