@@ -20,7 +20,7 @@ class BasePri {
     }
     async isElementOverlapped() {
         const location = await this.getElementLocation();
-        const elsAtPoint = await this._page.evaluate(location => {
+        const elsAtPoint = await this._page.evaluate((location) => {
             console.log('location:' + location);
             return Promise.resolve(document.elementFromPoint(location.x, location.y));
         }, location);

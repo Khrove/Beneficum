@@ -12,6 +12,6 @@ const Auth_operation_1 = require("../components/business-operations/Auth/Auth.op
     await teacher.loginWithEmail('sit_t1_reg1auto@yopmail.com', 'Test@123');
     await page.waitForLoadState('networkidle');
     (0, test_1.expect)(gradeViewOps.areModulesVisible()).toBeTruthy();
-    await gradeViewOps.checkGrade('Level 1');
+    await gradeViewOps.checkGrade('1');
     await gradeViewOps.clickOnModule('Counting, Comparison, and Addition');
 });
