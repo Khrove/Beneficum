@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const test_1 = require("@playwright/test");
 const Grade_view_operations_1 = require("../components/business-operations/explore/Grade.view.operations");
-const Auth_operation_1 = require("../components/business-operations/auth/Auth.operation");
+const Auth_operation_1 = require("../components/business-operations/Auth/Auth.operation");
 (0, test_1.test)('Login to Great Minds and move around', async ({ page }) => {
     const teacher = (0, Auth_operation_1.AuthOperation)(page);
     const gradeViewOps = (0, Grade_view_operations_1.GradeViewOperation)(page);
