@@ -1,7 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import { GradeView } from "../../Pages/Explore/Grade.view";
 
-
 export function GradeViewOperation(page: Page) {
     const gradeView = GradeView(page);
     return {
