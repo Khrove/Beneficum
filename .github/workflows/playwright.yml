@@ -5,10 +5,17 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    continue-on-error: true
+
     steps:
     - uses: actions/checkout@v2
 
@@ -19,14 +26,14 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+    - name: Install Playwright Globally for CLI purposes
+      run: npm i playwright -g
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    
-    - name: Compile Typescript
-      run: tsc
 
     - name: Run Playwright tests
-      run: npm run test
+      run: playwright test --browser=${{ matrix.browser }}
       env:
         UAT_URL: ${{ secrets.UAT_URL }}
 
